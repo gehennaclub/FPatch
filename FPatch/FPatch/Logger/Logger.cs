@@ -37,7 +37,7 @@ namespace FPatch.Logger
         {
             string icon = icons[type];
             //ConsoleColor color = colors[type];
-            ConsoleColor reset = ConsoleColor.White;
+            //ConsoleColor reset = ConsoleColor.White;
 
             //Console.ForegroundColor = color;
             Console.WriteLine($"{icon} {message}");

@@ -1,0 +1,25 @@
+{
+    "patch" : {
+        "version" : "alpha",
+        "author" : "neo",
+        "content" : [
+            {
+                "file" : "Assembly.dll",
+                "offset" : 0,
+                "payload" : [
+                    0, 0, 0
+                ]
+            },
+            {
+                "file" : "Assembly.dll",
+                "offset" : 0,
+                "payload" : [
+                    0, 0, 0
+                ]
+            }
+        ]
+    },
+    "settings" : {
+        "version" : "1.0"
+    }
+}

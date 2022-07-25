@@ -101,7 +101,7 @@ namespace FPatch
             logger.display($"Starting patch", Logger.Logs.Type.wait);
             foreach (Types.Patch patch in model.patch.content)
             {
-                logger.display($"Applying patch {patch.payload.start}", Logger.Logs.Type.item);
+                logger.display($"Applying patch to: '{patch.file}'", Logger.Logs.Type.item);
                 if (check_file(patch.file) == true)
                 {
                     backup_file(patch.file);

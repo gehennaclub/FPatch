@@ -13,7 +13,22 @@ namespace FPatch.Configuration
     {
         public void save(Model.Rootobject model)
         {
-            File.WriteAllText("patch.fpp", JsonConvert.SerializeObject(model));
+            string output = "patch";
+            UInt32 count = 0;
+
+            if (Directory.Exists(output) == false)
+            {
+                Directory.CreateDirectory(output);
+            }
+
+            foreach (Types.Patch patch in model.patch.content)
+            {
+                File.WriteAllText($"{output}\\patched.{count.ToString("00")}", JsonConvert.SerializeObject(patch));
+                count++;
+            }
+
+            File.WriteAllText($"{output}\\fpatch.fpp", JsonConvert.SerializeObject(model));
+
         }
     }
 }
