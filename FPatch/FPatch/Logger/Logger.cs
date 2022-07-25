@@ -23,25 +23,25 @@ namespace FPatch.Logger
 
         private Dictionary<Logs.Type, ConsoleColor> colors = new Dictionary<Logs.Type, ConsoleColor>()
         {
-            { Logs.Type.information, ConsoleColor.Yellow },
-            { Logs.Type.wait, ConsoleColor.Cyan },
+            { Logs.Type.information, ConsoleColor.White },
+            { Logs.Type.wait, ConsoleColor.White },
             { Logs.Type.success, ConsoleColor.Green },
             { Logs.Type.error, ConsoleColor.Red },
             { Logs.Type.normal, ConsoleColor.White },
             { Logs.Type.item, ConsoleColor.White },
-            { Logs.Type.received, ConsoleColor.Magenta },
-            { Logs.Type.sent, ConsoleColor.Cyan }
+            { Logs.Type.received, ConsoleColor.White },
+            { Logs.Type.sent, ConsoleColor.White }
         };
 
         public void display(string message, Logs.Type type)
         {
             string icon = icons[type];
-            //ConsoleColor color = colors[type];
-            //ConsoleColor reset = ConsoleColor.White;
+            ConsoleColor color = colors[type];
+            ConsoleColor reset = ConsoleColor.White;
 
-            //Console.ForegroundColor = color;
+            Console.ForegroundColor = color;
             Console.WriteLine($"{icon} {message}");
-            //Console.ForegroundColor = reset;
+            Console.ForegroundColor = reset;
         }
     }
 }

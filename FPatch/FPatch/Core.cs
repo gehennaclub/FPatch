@@ -75,6 +75,35 @@ namespace FPatch
             logger.display($"Model loaded", Logger.Logs.Type.success);
         }
 
+        public void restore()
+        {
+            logger.display($"Starting restore", Logger.Logs.Type.wait);
+            foreach (Types.Patch patch in model.patch.content)
+            {
+                logger.display($"Recovering '{patch.file}'", Logger.Logs.Type.item);
+                recover(patch.file);
+            }
+            logger.display($"Restore completed", Logger.Logs.Type.information);
+        }
+
+        public void recover(string file)
+        {
+            string backup_output = $"{file}.bak";
+
+            if (File.Exists(file) == true)
+            {
+                logger.display($"Deleting '{file}'", Logger.Logs.Type.item);
+                File.Delete(file);
+                logger.display($"'{file}' deleted", Logger.Logs.Type.information);
+            }
+            if (File.Exists(backup_output) == true)
+            {
+                logger.display($"Moving backup", Logger.Logs.Type.item);
+                File.Move(backup_output, file);
+                logger.display($"Backup moved", Logger.Logs.Type.information);
+            }
+        }
+
         public void save()
         {
             logger.display($"Saving model", Logger.Logs.Type.wait);
@@ -101,7 +130,7 @@ namespace FPatch
             logger.display($"Starting patch", Logger.Logs.Type.wait);
             foreach (Types.Patch patch in model.patch.content)
             {
-                logger.display($"Applying patch to: '{patch.file}'", Logger.Logs.Type.item);
+                logger.display($"Applying '{patch.file}' patch", Logger.Logs.Type.item);
                 if (check_file(patch.file) == true)
                 {
                     backup_file(patch.file);
@@ -117,7 +146,7 @@ namespace FPatch
                     logger.display($"Patch not applied", Logger.Logs.Type.error);
                 }
             }
-            logger.display($"All patch applied", Logger.Logs.Type.success);
+            logger.display($"All patch completed", Logger.Logs.Type.information);
         }
 
         private void apply_patch(Types.Patch patch)
@@ -137,17 +166,19 @@ namespace FPatch
 
         private void backup_file(string file)
         {
-            string output = $"{file}.bak";
+            string backup_output = $"{file}.bak";
 
             logger.display($"Building backup", Logger.Logs.Type.item);
 
-            if (File.Exists(output) == true)
+            if (File.Exists(backup_output) == true)
             {
-                File.Delete(output);
+                logger.display($"Deleting previous backup", Logger.Logs.Type.item);
+                File.Delete(backup_output);
+                logger.display($"Backup deleted", Logger.Logs.Type.success);
             }
-            File.Copy(file, output);
+            File.Copy(file, backup_output);
 
-            logger.display($"Backup built", Logger.Logs.Type.success);
+            logger.display($"Backup built", Logger.Logs.Type.information);
         }
 
         private void load_bytes(string file)
@@ -156,7 +187,7 @@ namespace FPatch
 
             bytes = File.ReadAllBytes(file);
 
-            logger.display($"{bytes.Count()} bytes loaded", Logger.Logs.Type.success);
+            logger.display($"{bytes.Count()} bytes loaded", Logger.Logs.Type.information);
         }
 
         private void save_bytes(string file)
@@ -165,7 +196,7 @@ namespace FPatch
 
             File.WriteAllBytes(file, bytes);
 
-            logger.display($"{bytes.Count()} bytes saved", Logger.Logs.Type.success);
+            logger.display($"{bytes.Count()} bytes saved", Logger.Logs.Type.information);
         }
     }
 }
