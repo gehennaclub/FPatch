@@ -1,0 +1,9 @@
+C:\Users\JST_WATE\Downloads\Signée\FPatch\FPatch\bin\Debug\FPatch.dll
+C:\Users\JST_WATE\Downloads\Signée\FPatch\FPatch\bin\Debug\FPatch.pdb
+C:\Users\JST_WATE\Downloads\Signée\FPatch\FPatch\bin\Debug\Newtonsoft.Json.dll
+C:\Users\JST_WATE\Downloads\Signée\FPatch\FPatch\bin\Debug\Newtonsoft.Json.xml
+C:\Users\JST_WATE\Downloads\Signée\FPatch\FPatch\obj\Debug\FPatch.csprojAssemblyReference.cache
+C:\Users\JST_WATE\Downloads\Signée\FPatch\FPatch\obj\Debug\FPatch.csproj.CoreCompileInputs.cache
+C:\Users\JST_WATE\Downloads\Signée\FPatch\FPatch\obj\Debug\FPatch.csproj.CopyComplete
+C:\Users\JST_WATE\Downloads\Signée\FPatch\FPatch\obj\Debug\FPatch.dll
+C:\Users\JST_WATE\Downloads\Signée\FPatch\FPatch\obj\Debug\FPatch.pdb
