@@ -7,7 +7,7 @@
 
 1. [Environment](#Environment)
 2. [Informations](#Informations)
-3. [Build a patch](#building-a-patch)
+3. [Build a patch](#Build-a-patch)
 
 ## Environment
 
