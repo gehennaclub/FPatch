@@ -51,7 +51,7 @@ THIS IS A TEST
                         84,
                         32
                     ],
-                    "method" : 0
+                    "method" : 1
                 }
             }
         ]
@@ -84,7 +84,7 @@ FPatch.Core fpatch = new FPatch.Core("neo", "1.0.0");
 ### Patch
 
 ```CSHARP
-fpatch.create_and_add("<FILE TO PATCH>", "<OFFSET>", "<BYTES EDITED>");
+fpatch.create_and_add("<FILE TO PATCH>", "<OFFSET>", "<BYTES EDITED>", "<METHOD>");
 ```
 The function `fpatch.create_and_add()` creates a patch and add it to the list of the patches to add for your mod
 This is just a simple `fpatch.create()` with a `fpatch.add()`.
@@ -93,24 +93,18 @@ If you want to create a patch without adding it to the patch list just use `fpat
 - (string) FILE TO PATCH: the file path to patch
 - (Uint32) OFFSET: the index where the patch will start
 - (UInt32[]) BYTES EDITED: the patch
+- (FPatch.Address.Pointer.Method) METHOD: how to inject the bytes in the file
 
 
 ##### Example
 
 ```CSHARP
-fpatch.create_and_add("test.txt", 0x00000008, new UInt32[]
-{
-    (UInt32)'N',
-    (UInt32)'O',
-    (UInt32)'T',
-    (UInt32)' ',
-    (UInt32)'A',
-    (UInt32)' ',
-    (UInt32)'T',
-    (UInt32)'E',
-    (UInt32)'S',
-    (UInt32)'T'
-});
+fpatch.create_and_add(
+    "test.txt",
+    0x00000008,
+    FPatch.Tools.Payload.build("NOT A PATCHED TEST"),
+    FPatch.Address.Pointer.Method.insert
+);
 ```
 
 ### Entire payload build
@@ -129,20 +123,12 @@ fpatch.save();
 ```CSHARP
 FPatch.Core fpatch = new FPatch.Core("neo", "1.0.0");
 
-fpatch.create_and_add("test.txt", 0x00000008, new UInt32[]
-{
-    (UInt32)'N',
-    (UInt32)'O',
-    (UInt32)'T',
-    (UInt32)' ',
-    (UInt32)'A',
-    (UInt32)' ',
-    (UInt32)'T',
-    (UInt32)'E',
-    (UInt32)'S',
-    (UInt32)'T'
-});
-
+fpatch.create_and_add(
+    "test.txt",
+    0x00000008,
+    FPatch.Tools.Payload.build("NOT A PATCHED TEST"),
+    FPatch.Address.Pointer.Method.replace
+);
 fpatch.apply();
 fpatch.save();
 ```
@@ -175,5 +161,5 @@ version: 1.0.0
 
 `test.txt`
 ```
-THIS IS NOT A TEST
+THIS IS NOT A PATCHED TEST
 ```

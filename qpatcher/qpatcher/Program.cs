@@ -11,10 +11,9 @@ namespace qpatcher
     {
         static void Main(string[] args)
         {
-            string file = "fpatch.fpp";
             FPatch.Core fpatch = new FPatch.Core(null, null);
 
-            fpatch.load(File.ReadAllText(file));
+            fpatch.load("fpatch.fpp");
             fpatch.apply();
 
             Console.ReadLine();

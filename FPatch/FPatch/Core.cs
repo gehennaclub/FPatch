@@ -44,22 +44,23 @@ namespace FPatch
             return (model);
         }
 
-        public Types.Patch create(string file, UInt32 offset, UInt32[] payload)
+        public Types.Patch create(string file, UInt32 offset, UInt32[] payload, Address.Pointer.Method method)
         {
             logger.display($"Creating patch: {offset}", Logger.Logs.Type.wait);
+
             Types.Patch patch = new Types.Patch()
             {
                 status = Types.Patch.States.not_patched,
                 file = file,
-                payload = new Address.Pointer(offset, payload),
+                payload = new Address.Pointer(offset, payload, method)
             };
 
             return (patch);
         }
 
-        public void create_and_add(string file, UInt32 offset, UInt32[] payload)
+        public void create_and_add(string file, UInt32 offset, UInt32[] payload, Address.Pointer.Method method)
         {
-            add(create(file, offset, payload));
+            add(create(file, offset, payload, method));
         }
 
         public void add(Types.Patch patch)
@@ -151,7 +152,9 @@ namespace FPatch
 
         private void apply_patch(Types.Patch patch)
         {
-            bytes = patch.payload.replace(bytes);
+            Settings.Mapper mapper = new Settings.Mapper(patch.payload);
+
+            bytes = mapper.mapping[patch.payload.method](bytes);
             patch.status = Types.Patch.States.patched;
         }
 

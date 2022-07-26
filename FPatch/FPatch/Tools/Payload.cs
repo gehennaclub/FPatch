@@ -19,5 +19,19 @@ namespace FPatch.Tools
 
             return (payload);
         }
+
+        public static UInt32[] build(UInt32 character, UInt32 count)
+        {
+            UInt32[] payload = new UInt32[count];
+
+            for (int i = 0; i < count; i++)
+            {
+                payload[i] = character;
+            }
+
+            return (payload);
+        }
+
+
     }
 }

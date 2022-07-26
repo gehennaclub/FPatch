@@ -1,1 +1,1 @@
-{"patch":{"version":"1.0.0","author":"neo","content":[{"file":"test.txt","status":1,"payload":{"start":8,"payload":[78,79,84,32,65,32,84,69,83,84]}}]},"settings":{"version":"1.0.0"}}
+{"patch":{"version":"1.0.0","author":"neo","content":[{"file":"test.txt","status":0,"payload":{"start":8,"payload":[65,32,80,65,84,67,72,69,68,32,84,69,83,84,32],"method":1}}]},"settings":{"version":"1.3.2"}}

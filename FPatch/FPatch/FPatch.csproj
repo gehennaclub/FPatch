@@ -52,6 +52,7 @@
     <Compile Include="Logger\Logger.cs" />
     <Compile Include="Logger\Logs.cs" />
     <Compile Include="Settings\Core.cs" />
+    <Compile Include="Settings\Mapper.cs" />
     <Compile Include="Tools\Payload.cs" />
     <Compile Include="Types\Patch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -59,6 +60,5 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

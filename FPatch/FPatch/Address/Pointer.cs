@@ -6,21 +6,44 @@ using System.Threading.Tasks;
 
 namespace FPatch.Address
 {
+    [Serializable]
     public class Pointer
     {
         public UInt32 start { get; set; }
         public UInt32[] payload { get; set; }
-        private Dictionary<Method, Action> mapping { get; set; }
+        public Method method { get; set; }
         public enum Method
         {
             insert = 0,
             replace = 1
         }
 
-        public Pointer(UInt32 start, UInt32[] payload)
+        public Pointer(UInt32 start, UInt32[] payload, Method method)
         {
             this.start = start;
             this.payload = payload;
+            this.method = method;
+        }
+
+        public byte[] insert(byte[] sources)
+        {
+            UInt32 index = 0x00000000;
+            List<byte> result = new List<byte>();
+
+            foreach (byte source in sources)
+            {
+                if (index == start)
+                {
+                    foreach (byte b in payload)
+                    {
+                        result.Add(b);
+                    }
+                }
+                result.Add(source);
+                index++;
+            }
+
+            return (result.ToArray());
         }
 
         public byte[] replace(byte[] sources)

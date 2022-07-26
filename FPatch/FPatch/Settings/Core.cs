@@ -28,6 +28,7 @@ namespace FPatch.Settings
                 Version.minor,
                 new string[]
                 {
+                    "add insert method for patch, add functions methods mapping",
                     "add restore function to restore all patched files as default",
                     "add tools > payload > build(string)"
                 }
