@@ -1,6 +1,8 @@
 # FPatch
 🍭 File Patcher
 
+**Version: 1.3.2**
+
 #### Table of contents
 
 1. [Environment](#Environment)
@@ -20,6 +22,45 @@ THIS IS A TEST
 - All the patches: `patch.fpp`
 - A backup of the patched file is made: `filename.extention.bak`
 - The patches not added to the list won't be saved in the patch file
+- Patch file format:
+```JSON
+{
+    "patch" : {
+        "version" : "1.0.0",
+        "author" : "neo",
+        "content": [
+            {
+                "file" : "test.txt",
+                "status" : 0,
+                "payload" : {
+                    "start" : 8,
+                    "payload" : [
+                        65,
+                        32,
+                        80,
+                        65,
+                        84,
+                        67,
+                        72,
+                        69,
+                        68,
+                        32,
+                        84,
+                        69,
+                        83,
+                        84,
+                        32
+                    ],
+                    "method" : 0
+                }
+            }
+        ]
+    },
+    "settings": {
+        "version" : "1.3.2"
+    }
+}
+```
 
 ## Build a patch
 
