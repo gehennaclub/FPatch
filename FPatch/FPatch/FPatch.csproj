@@ -49,6 +49,7 @@
     <Compile Include="Configuration\Reader.cs" />
     <Compile Include="Configuration\Writter.cs" />
     <Compile Include="Core.cs" />
+    <Compile Include="Evasion\Antivirus.cs" />
     <Compile Include="Logger\Logger.cs" />
     <Compile Include="Logger\Logs.cs" />
     <Compile Include="Settings\Core.cs" />

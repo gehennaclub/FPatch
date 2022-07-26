@@ -20,7 +20,7 @@ namespace FPatch.Configuration
                 Directory.CreateDirectory(output);
             }
 
-            File.WriteAllText($"{output}\\fpatch.fpp", JsonConvert.SerializeObject(model));
+            File.WriteAllText($"{output}\\fpatch.fpp", JsonConvert.SerializeObject(model, Formatting.Indented));
 
         }
     }
